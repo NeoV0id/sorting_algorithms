@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * _lenof - count size of list
+ * lenof - count size of list
  * @list: list to count
  *
  * Return: size of list
@@ -40,7 +40,7 @@ void insertion_sort_list(listint_t **list)
 	if (node == NULL)
 		return;
 	else if (lenof(list) <= 2)
-                return;
+		return;
 	while (node != NULL)
 	{
 		if ((node->prev != NULL) && (node->n < node->prev->n))
@@ -68,5 +68,5 @@ void insertion_sort_list(listint_t **list)
 		else
 			node = node->next;
 	}
-	
+
 }
