@@ -12,6 +12,9 @@ void quick_sort(int *array, size_t size)
 	unsigned int j = 0;
 	int tmp;
 
+	if (size <= 2)
+                return;
+
 	while (i >= 0)
 	{
 		tmp = array[i];

@@ -31,33 +31,42 @@ size_t lenof(listint_t **list)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *n;
-	listint_t *tmp;
+	listint_t *node;
+	listint_t *tmp, *tmprev1, *tmprev2, *tmprev3;
 
-	n = malloc(sizeof(listint_t));
-	n = *list;
+	node = malloc(sizeof(listint_t));
+	node = *list;
 
-	if (n == NULL)
+	if (node == NULL)
 		return;
 	else if (lenof(list) <= 2)
                 return;
-	while (n->next != NULL)
+	while (node != NULL)
 	{
-		if (n->next < n)
+		if ((node->prev != NULL) && (node->n < node->prev->n))
 		{
-			tmp = n->next;
-			while (tmp < n->prev)
-			{
-				n = n->prev;
-				if (tmp > n->prev)
-				{
-					n->prev->next = tmp;
-					n->prev = tmp;
-					print_list(list);
-				}
-			}
+			tmp = node->prev->prev;
+			tmprev1 = node->prev;
+			tmprev2 = node;
+			tmprev3 = node->next;
+
+			tmprev1->next = tmprev3;
+			if (tmprev3 != NULL)
+				tmprev3->prev = tmprev1;
+
+			tmprev2->next = tmprev1;
+			tmprev2->prev = tmp;
+			if (tmp != NULL)
+				tmp->next = tmprev2;
+			else
+				*list = tmprev2;
+			tmprev1->prev = tmprev2;
+			node = *list;
+			print_list(*list);
+			continue;
 		}
-		n = n->next;
+		else
+			node = node->next;
 	}
 	
 }
