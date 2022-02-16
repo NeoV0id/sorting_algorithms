@@ -39,7 +39,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (node == NULL)
 		return;
-	else if (lenof(list) <= 2)
+	else if (lenof(list) < 2 || list == NULL)
 		return;
 	while (node != NULL)
 	{
