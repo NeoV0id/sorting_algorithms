@@ -10,7 +10,7 @@
 
 size_t lenof(listint_t **list)
 {
-	unsigned int i = 0;
+	unsigned int i = 1;
 	listint_t *count;
 
 	count = malloc(sizeof(listint_t));
